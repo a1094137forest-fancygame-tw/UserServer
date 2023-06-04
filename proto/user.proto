@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package backenduser;
+
+option go_package = "./fancygame";
+
+import "backend.proto";
+import "lobby.proto";
+import "shared.proto";
+
+service User{
+    rpc Register(backend.RegisterInfo)returns(backend.RegisterRes);
+    rpc Login(backend.LoginInfo)returns(backend.LoginRes);
+    rpc Logout(backend.LogoutInfo)returns(backend.LogoutRes);
+    rpc GetMemberList(shared.EmptyReq)returns(lobby.GetMemberListRes);
+    rpc SetMemberData(lobby.SetMember)returns(lobby.SetMemberRes);
+    rpc KickOutMember(lobby.KickOutMemberInfo)returns(lobby.KickOutMemberRes);
+}
